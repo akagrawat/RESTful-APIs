@@ -6,20 +6,16 @@ app.use(bodyParser.json());
 
 //DB connection
 const mongoose = require('mongoose');
-require('dotenv/config');
+const connection  = require('dotenv/config');
 
-mongoose.connect('url',
+mongoose.connect('<DB_CONNECTION URL>',
 {useUnifiedTopology: true }, () => console.log('Mongodb connected successfully'));
+
 
 // Import routes
 const movieRoutes = require('./routes/movie');
 
 app.use('/', movieRoutes);  
 
-//routes
-// app.get('/', (req,res)=>{
-//     res.send(movies);
-// });
-
-const port = process.env.PORT || 3003;
+const port = 3000;
 app.listen(port, () => console.log(`Listing on port ${port}`));
